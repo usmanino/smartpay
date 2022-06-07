@@ -77,7 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: SizeConfig.minBlockVertical! * 3),
                   Text('Country : ${userProvider.user.country}'),
                   SizedBox(height: SizeConfig.minBlockVertical! * 3),
-                  Text('Country : ${userProvider.user.country}')
+                  Text(
+                    'secret message : ${userProvider.setTok = userProvider.tok.toString()}',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                    ),
+                  )
                 ],
               )
             ],

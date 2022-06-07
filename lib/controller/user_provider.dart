@@ -19,7 +19,14 @@ class UserProvider extends ChangeNotifier {
   get user => _user;
   String? _token;
 
+  get tok => _token;
+  set setTok(String v) {
+    _token = v;
+  }
+
   get pass => isLoginObsecure;
+
+  get use => _user;
   set setUser(UserModel value) {
     _user = value;
   }
@@ -117,12 +124,12 @@ class UserProvider extends ChangeNotifier {
         password: password,
         device_name: device_name,
       );
-      print("------");
-      print(_responseMessageModel.success);
-      print("------");
+      // print("------");
+      // print(_responseMessageModel.success);
+      // print("------");
 
       if (_responseMessageModel.success!) {
-        _token = _responseMessageModel.data!['token'];
+        setTok = _responseMessageModel.data!['token'];
         _user = UserModel.fromJson(_responseMessageModel.data!['user']);
         _prefs!
             .setString('user', jsonEncode(_responseMessageModel.data!['user']));
@@ -173,7 +180,7 @@ class UserProvider extends ChangeNotifier {
       // status = UserStatus.Unauthorized;
       // notifyListeners();
       if (_responseMessageModel.success!) {
-        _token = _responseMessageModel.data!['token'];
+        setTok = _responseMessageModel.data!['token'];
         _user = UserModel.fromJson(_responseMessageModel.data!['user']);
         _prefs!
             .setString('user', jsonEncode(_responseMessageModel.data!['user']));
